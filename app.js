@@ -25,7 +25,23 @@ function addItem(e) {
   const id = new Date().getTime().toString()
 
   if(value && !editFlag) {
-    console.log('add item to the list');
+    const element = document.createElement('article')
+    // add className
+    element.classList.add('grocery-item')
+    // add id
+    const attr = document.createAttribute('data-id')
+    attr.value = id;
+    element.setAttributeNode(attr)
+    element.innerHTML = `
+          <p class="title">Item</p>
+          <div class="btn-container">
+            <button type='button' class='edit-btn'>
+              <i class="fas fa-edit"></i>
+            </button>
+              <button type='button' class='delete-btn'>
+                <i class="fas fa-trash"></i>
+              </button>
+          </div>`
   } else if(value && editFlag) {
     console.log('editing');
   } else {
