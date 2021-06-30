@@ -33,7 +33,7 @@ function addItem(e) {
     attr.value = id;
     element.setAttributeNode(attr)
     element.innerHTML = `
-          <p class="title">Item</p>
+          <p class="title">${value}</p>
           <div class="btn-container">
             <button type='button' class='edit-btn'>
               <i class="fas fa-edit"></i>
@@ -42,6 +42,16 @@ function addItem(e) {
                 <i class="fas fa-trash"></i>
               </button>
           </div>`
+          // append child
+       list.appendChild(element)   
+       // display alert
+       displayAlert('item added to the list', 'success')
+       // show container
+       container.classList.add('show-container')
+       // add to local storage
+       addToLocalStorage(id, value)
+       //set back to default
+       setBackToDefault()
   } else if(value && editFlag) {
     console.log('editing');
   } else {
@@ -59,6 +69,10 @@ function displayAlert(text, action) {
       alert.textContent = ''
     alert.classList.remove(`alert-${action}`)
     }, 3000)
+}
+// set back to default
+function addToLocalStorage(id, value) {
+  console.log('added to local storage');
 }
 // ****** LOCAL STORAGE **********
 
