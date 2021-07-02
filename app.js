@@ -71,9 +71,16 @@ function displayAlert(text, action) {
     }, 3000)
 }
 // set back to default
+function setBackToDefault() {
+  grocery.value = ''
+  editFlag = false;
+  editId = '';
+  submitBtn.textContent = 'submit'
+}
+
+// ****** LOCAL STORAGE **********
 function addToLocalStorage(id, value) {
   console.log('added to local storage');
 }
-// ****** LOCAL STORAGE **********
 
 // ****** SETUP ITEMS **********
