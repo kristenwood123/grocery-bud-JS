@@ -1,3 +1,5 @@
+const { clear } = require("console")
+
 // ****** SELECT ITEMS **********
 const alert = document.querySelector('.alert')
 const form = document.querySelector('.grocery-form')
@@ -5,7 +7,7 @@ const grocery = document.getElementById('grocery')
 const submit = document.querySelector('.submit-btn')
 const container = document.querySelector('.grocery-container')
 const list = document.querySelector('.grocery-list')
-const clearnBtn = document.querySelector('.clear-btn')
+const clearBtn = document.querySelector('.clear-btn')
 
 
 // edit option
@@ -15,10 +17,13 @@ let editId = ''
 
 // ****** EVENT LISTENERS **********
 // submit form
-
 form.addEventListener('submit', addItem)
-// ****** FUNCTIONS **********
 
+// clear btn
+clearBtn.addEventListener('click', clearItems)
+
+
+// ****** FUNCTIONS **********
 function addItem(e) {
   e.preventDefault()
   const value = grocery.value
@@ -69,6 +74,18 @@ function displayAlert(text, action) {
       alert.textContent = ''
     alert.classList.remove(`alert-${action}`)
     }, 3000)
+}
+// clear items
+function clearItems () {
+  const items = document.querySelectorAll('.grocery-item')
+  
+  if(items.length > 0){
+    items.forEach(function(item) {
+      list.removeChild(item)
+    })
+  }
+  container.classList.remove('show-container')
+  displayAlert('empty list', 'danger')
 }
 // set back to default
 function setBackToDefault() {
